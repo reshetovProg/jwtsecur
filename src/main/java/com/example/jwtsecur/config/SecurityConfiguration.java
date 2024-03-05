@@ -22,7 +22,7 @@ public class SecurityConfiguration {
         http
                 .csrf(customer->customer.disable())
                 .authorizeHttpRequests(customer->{
-                    //customer.requestMatchers().permitAll();
+                    customer.requestMatchers("/api/v1/auth/**").permitAll();
                     customer.anyRequest().authenticated();
                 })
                 .sessionManagement(customer->{
